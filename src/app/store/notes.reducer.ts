@@ -1,0 +1,54 @@
+import { createReducer, on } from '@ngrx/store';
+import * as NotesActions  from './notes.actions';
+import { NotesState } from './notes.model';
+
+export const initialState: NotesState = {
+    notes: [],
+    loading: false,
+    error: null
+};
+
+
+export const notesReducer = createReducer(
+    initialState,
+
+    on(NotesActions.loadNotes, state => ({
+        ...state,
+        loading: true,
+        error: null
+    })),
+
+    on(NotesActions.loadNotesSuccess, (state, { notes }) => ({
+        ...state,
+        notes,
+        loading: false
+    })),
+
+    on(NotesActions.loadNotesFailure, (state, { error }) => ({
+        ...state,
+        loading: false,
+        error
+    })),
+
+    on(NotesActions.addNote, (state, { note }) => ({
+        ...state,
+        notes: [note, ...state.notes]
+    })),
+
+    on(NotesActions.editNote, (state, { note }) => ({
+        ...state,
+        notes: state.notes.map(n => (n.id === note.id ? note : n))
+    })),
+
+    on(NotesActions.deleteNote, (state, { id }) => ({
+        ...state,
+        notes: state.notes.filter(n => n.id !== Number(id))
+    })),
+
+    on(NotesActions.favouriteNote, (state, { id, isFavourite }) => ({
+        ...state,
+        notes: state.notes.map(n =>
+            n.id === Number(id) ? { ...n, isFavourite } : n
+        )
+    }))
+);

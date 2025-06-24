@@ -1,0 +1,18 @@
+.dashboard-wrapper {
+    display: flex;
+    align-items: row;
+    height: 100dvh;
+    width: 100dvw;
+    overflow: hidden;
+
+    app-sidebar {
+        width: 20%;
+        height: 100dvh;
+        border-right: 1px solid rgb(220, 220, 220);
+    }
+
+    app-listbar {
+        border-right: 1px solid rgb(220, 220, 220);
+        width: 30%;
+    }
+}

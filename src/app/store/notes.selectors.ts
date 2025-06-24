@@ -1,0 +1,30 @@
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { NotesState } from './notes.model';
+
+
+export const selectNotesState = createFeatureSelector<NotesState>('notes');
+
+export const selectNotes = createSelector(
+  selectNotesState,
+  (state) => state.notes
+);
+
+export const selectLoading = createSelector(
+  selectNotesState,
+  (state) => state.loading
+);
+
+export const selectError = createSelector(
+  selectNotesState,
+  (state) => state.error
+);
+
+export const selectArchivedNotes = createSelector(
+  selectNotes,
+  (notes) => notes.filter(note => note.isArchived)
+);
+
+export const selectFavouriteNotes = createSelector(
+  selectNotes,
+  (notes) => notes.filter(note => note.isFavourite)
+);
