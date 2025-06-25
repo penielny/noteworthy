@@ -39,10 +39,15 @@ export const editNote = createAction(
 
 export const deleteNote = createAction(
   '[Notes] Delete Note',
-  props<{ id: string }>()
+  props<{ id: number }>()
 );
 
 export const favouriteNote = createAction(
   '[Notes] Favourite Note',
-  props<{ id: string; isFavourite: boolean }>()
+  props<{ id: number; isFavourite: boolean }>()
+);
+
+export const archiveNote = createAction(
+  '[Notes] Favourite Note',
+  props<{ id: number; isArchived: boolean }>()
 );

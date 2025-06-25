@@ -23,6 +23,21 @@ export class NoteComponent implements OnDestroy {
     })
   }
 
+  onFavourite() {
+    if (!this.note) return;
+    this.noteService.toggleFavourite(this.note?.id, !this.note?.isFavourite)
+  }
+
+  onArchive() {
+    if (!this.note) return;
+    this.noteService.toggleArchived(this.note?.id, !this.note?.isArchived)
+  }
+
+  onDelete() {
+    if (!this.note?.id) return;
+    this.noteService.deleteNote(this.note?.id)
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
