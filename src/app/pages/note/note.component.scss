@@ -1,0 +1,64 @@
+.note-wrapper {
+    flex: 1;
+
+    .header {
+        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        border-bottom: 1px solid rgb(230, 230, 230);
+
+        .actions-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.6rem;
+                border-radius: 1rem;
+                cursor: pointer;
+                border: none;
+                background-color: rgb(243, 243, 243);
+                svg {
+                    height: 1.5rem;
+                }
+            }
+        }
+
+        button {
+            background-color: rgba(255, 208, 142, 0.262);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap:0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            border: none;
+
+            svg {
+                height: 1.5rem;
+            }
+        }
+    }
+
+    .body {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        p {
+            line-height: 2rem;
+            color: rgb(97, 96, 96);
+            font-weight: 400;
+            font-size: medium;
+        }
+    }
+}

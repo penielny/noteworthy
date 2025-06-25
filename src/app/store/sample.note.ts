@@ -3,8 +3,18 @@ import { Notes } from "../interfaces/notes";
 export const mockNotes: Notes[] = [
   {
     id: 1,
-    title: 'First Note',
-    note: "Let me know if you'd like help setting up a testable NgRx + standalone app scaffold with mocked state/actions/effects.",
+    title: 'Build AI-Powered Apps With Genkit and Angular',
+    note: `
+    There has never been a better time to start building with AI and the state-of-the-art models available to developers everywhere. Building with AI is for everyone, especially web developers. The Firebase team at Google has just launched the 1.0 version of Genkit for Node.js which means that it is ready for production and ready to help you build the next generation of AI powered applications.
+
+What is Genkit?
+Genkit is a framework designed to help you build AI-powered applications and features. It provides open source libraries for Node.js and Go as well as developer tools for testing and debugging. Genkit is designed as a server-side solution.
+
+With that in mind, how can Angular developers leverage Genkit? Let’sl explore some of the architectural options available to you.
+
+Connecting to Genkit in Angular
+Because Genkit APIs are designed to be used on the server, it’s recommended to use a Node or Go based backend. For a Node-based backend, the most straightforward involves installing the necessary dependencies (genkit and @genkit-ai/googleai), selecting a model and sending a prompt. Here’s an example:
+    `,
     isFavourite: false,
     isArchived: false,
     tags: []
