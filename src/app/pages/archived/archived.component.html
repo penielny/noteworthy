@@ -1,1 +1,9 @@
-<p>archived works!</p>
+
+<div class="wrapper">
+    <h1>Archived Notes</h1>
+    <div class="note-list">
+        @for (note of notes; track note.id) {
+        <app-note-list-item [note]="note" />
+        }
+    </div>
+</div>

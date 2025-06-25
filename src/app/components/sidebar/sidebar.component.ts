@@ -1,14 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { NotesService } from '../../services/notes.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [FontAwesomeModule,RouterLink],
+  imports: [RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
-  faHome = faHome;
+export class SidebarComponent implements OnInit, OnDestroy {
+
+  noteSubscription!: Subscription;
+  noteCount: number = 0;
+  favCount:number = 0;
+  archivedCount:number = 0;
+
+  constructor(private noteService: NotesService) { }
+
+  ngOnInit(): void {
+    this.noteSubscription = this.noteService.notes$.subscribe({
+      next: (value) => {
+        this.noteCount = value.length;
+        this.favCount = value.filter(n=>n.isFavourite).length,
+        this.archivedCount = value.filter(n=>n.isArchived).length
+      },
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.noteSubscription.unsubscribe()
+  }
+
 }

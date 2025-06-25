@@ -1,0 +1,101 @@
+.note-card-wrapper {
+    text-decoration: none;
+    background-color: rgba(241, 241, 241, 0.434);
+    padding: 1.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    cursor: pointer;
+
+    .header {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .options-btn {
+            background-color: rgb(203, 203, 203);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.2rem;
+            padding: 0.3rem 0.3rem;
+            cursor: pointer;
+
+            svg {
+                height: 1rem;
+            }
+        }
+
+        h3 {
+            font-size: 0.9rem;
+            color: rgb(28, 28, 28);
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    p {
+        font-size: small;
+        font-weight: 400;
+        color: rgb(114, 114, 114);
+        line-height: 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+
+        .date-text {
+            background-color: rgb(236, 234, 234);
+            padding: 0.3rem 1rem;
+            border-radius: 0.4rem;
+        }
+
+        .fav-button,
+        .tag {
+            padding: 0.3rem 1rem;
+            border-radius: 0.4rem;
+            border: none;
+
+            svg {
+                height: 1rem;
+            }
+        }
+
+        .tag {
+            background-color: rgb(236, 234, 234);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.note-card-wrapper.active {
+    background-color: rgb(255, 243, 238);
+
+    h3 {
+        color: rgb(255, 91, 21);
+        ;
+    }
+}

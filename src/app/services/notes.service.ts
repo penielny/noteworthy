@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as  NotesActions  from '../store/notes.actions';
+import * as  NotesActions from '../store/notes.actions';
 import { Notes } from '../interfaces/notes';
-import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes } from '../store/notes.selectors';
+import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes, selectSelectedNote } from '../store/notes.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class NotesService {
   favourites$: Observable<Notes[]>;
   archives$: Observable<Notes[]>;
   loading$: Observable<boolean>;
+  selectedNote$: Observable<Notes | null>;
   error$: Observable<any>;
 
   constructor(private store: Store) {
@@ -22,12 +23,17 @@ export class NotesService {
     this.archives$ = this.store.select(selectArchivedNotes)
     this.loading$ = this.store.select(selectLoading);
     this.error$ = this.store.select(selectError);
+    this.selectedNote$ = this.store.select(selectSelectedNote)
   }
 
   loadNotes() {
     this.store.dispatch(NotesActions.loadNotes());
   }
 
+  getNote(id: number) {
+    this.store.dispatch(NotesActions.getNote({ id }));
+  }
+  
   addNote(note: Notes) {
     this.store.dispatch(NotesActions.addNote({ note }));
   }

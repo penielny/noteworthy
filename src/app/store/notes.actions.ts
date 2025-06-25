@@ -13,6 +13,20 @@ export const loadNotesFailure = createAction(
   props<{ error: any }>()
 );
 
+export const getNote = createAction(
+  '[Notes] Get Note',
+  props<{ id: number }>()
+);
+export const getNoteSuccess = createAction(
+  '[Notes] Get Note Success',
+  props<{ note: Notes }>()
+);
+
+export const getNoteFailure = createAction(
+  '[Notes] Get Note Failure',
+  props<{ error: any }>()
+);
+
 export const addNote = createAction(
   '[Notes] Add Note',
   props<{ note: Notes }>()
