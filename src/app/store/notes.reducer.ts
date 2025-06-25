@@ -50,13 +50,27 @@ export const notesReducer = createReducer(
 
     on(NotesActions.deleteNote, (state, { id }) => ({
         ...state,
+        selectedNote: null,
         notes: state.notes.filter(n => n.id !== Number(id))
     })),
 
     on(NotesActions.favouriteNote, (state, { id, isFavourite }) => ({
         ...state,
+        selectedNote: state.selectedNote
+            ? { ...state.selectedNote, isFavourite }
+            : null,
         notes: state.notes.map(n =>
             n.id === Number(id) ? { ...n, isFavourite } : n
+        )
+    })),
+
+    on(NotesActions.archiveNote, (state, { id, isArchived }) => ({
+        ...state,
+        selectedNote: state.selectedNote
+            ? { ...state.selectedNote, isArchived }
+            : null,
+        notes: state.notes.map(n =>
+            n.id === Number(id) ? { ...n, isArchived } : n
         )
     }))
 );

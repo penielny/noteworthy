@@ -42,12 +42,16 @@ export class NotesService {
     this.store.dispatch(NotesActions.editNote({ note }));
   }
 
-  deleteNote(id: string) {
+  deleteNote(id:number) {
     this.store.dispatch(NotesActions.deleteNote({ id }));
   }
 
-  toggleFavourite(id: string, isFavourite: boolean) {
+  toggleFavourite(id: number, isFavourite: boolean) {
     this.store.dispatch(NotesActions.favouriteNote({ id, isFavourite }));
+  }
+
+  toggleArchived(id: number, isArchived: boolean) {
+    this.store.dispatch(NotesActions.archiveNote({ id, isArchived }));
   }
 
 }

@@ -27,6 +27,11 @@ export const routes: Routes = [
                  outlet:"info",
             },
             {
+                path: 'notes/:id/edit',
+                component: NoteComponent,
+                 outlet:"info",
+            },
+            {
                 path: 'favourites',
                 component: FavouriteComponent,
                  outlet:"list",

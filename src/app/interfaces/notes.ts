@@ -6,4 +6,5 @@ export interface Notes {
     tags: string[];
     isFavourite: boolean;
     isArchived: boolean;
+    createdAt:number;
 }
