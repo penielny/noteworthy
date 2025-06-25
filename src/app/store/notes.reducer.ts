@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import * as NotesActions  from './notes.actions';
+import * as NotesActions from './notes.actions';
 import { NotesState } from './notes.model';
 
 export const initialState: NotesState = {
     notes: [],
+    selectedNote: null,
     loading: false,
     error: null
 };
@@ -28,6 +29,13 @@ export const notesReducer = createReducer(
         ...state,
         loading: false,
         error
+    })),
+
+    on(NotesActions.getNote, (state, { id }) => ({
+        ...state,
+        selectedNote: state.notes.find(n => n.id === id) || null,
+        loading: true,
+        error: null
     })),
 
     on(NotesActions.addNote, (state, { note }) => ({

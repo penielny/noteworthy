@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .note-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
