@@ -3,11 +3,21 @@
     <div class="form-field">
         <label for="title">Title</label>
         <input placeholder="Note title here ..." name="title" formControlName="title" type="text" />
+        <div class="error">
+            @if(form.get('title')?.errors?.['required'] && form.get('title')?.touched) {
+            <p class="error-text">Title is required</p>
+            }
+        </div>
     </div>
 
     <div class="form-field">
         <label for="note">Note</label>
         <textarea #noteTextarea  (input)="onInput()" placeholder="type note content" name="note" formControlName="note"></textarea>
+        <div class="error">
+            @if(form.get('title')?.errors?.['required'] && form.get('title')?.touched) {
+            <p class="error-text">Title is required</p>
+            }
+        </div>
     </div>
 
     <div class="form-field">

@@ -5,6 +5,7 @@ import { ListbarComponent } from "../../components/listbar/listbar.component";
 import { PersonalizationService } from '../../services/personalization.service';
 import { Subscription } from 'rxjs';
 import { CustomizationModalComponent } from "../../components/customization-modal/customization-modal.component";
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,12 +16,18 @@ import { CustomizationModalComponent } from "../../components/customization-moda
 export class DashboardComponent implements OnDestroy {
 
   showCustomization = false;
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
 
-  constructor(private PersonalizationService: PersonalizationService) {
-    this.subscription = this.PersonalizationService.showMOdal$.subscribe((isOpen) => {
+  showNoteState:boolean= false;
+
+  constructor(private PersonalizationService: PersonalizationService,private noteService: NotesService) {
+    this.subscription.add(this.PersonalizationService.showMOdal$.subscribe((isOpen) => {
       this.showCustomization = isOpen;
-    });
+    }));
+
+    this.subscription.add(this.noteService.selectedNote$.subscribe((note) => {
+      this.showNoteState = !!note;
+    }));
   }
 
   toggleModal(state: boolean = !this.showCustomization) {
