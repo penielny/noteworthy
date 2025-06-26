@@ -27,6 +27,26 @@
         overflow: hidden;
     }
 
+    .note-info-welcome{
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+        img{
+            height: 5rem;
+        }
+        h2{
+            font-size: 1.5rem;
+            color: rgb(82, 82, 82);  
+        }
+        p{
+            color: rgb(142, 142, 142);
+            font-size: 1rem;
+        }
+    }
+
     app-customization-modal{
         position: absolute;
         top: 0;

@@ -5,7 +5,7 @@ import * as PersonalizationActions from "./personlization.actions";
 export const initialState: PersonalizationState = {
     isOpen: false,
     color: 'default',
-    fontName: 'inter'
+    fontName: 'roboto'
 };
 
 export const PersonalizationReducer = createReducer(

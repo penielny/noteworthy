@@ -26,6 +26,12 @@ export class PersonalizationService {
 
   setPersonalizationFont(fontName: fontName) {
     this.store.dispatch(PeronalizationActions.setPersonalizationFont({ fontName }));
+    document.body.classList.forEach((className) => {
+      if (className.startsWith('font-')) {
+        document.body.classList.remove(className);
+      }
+    })
+    document.body.classList.add(fontName ? `font-${fontName}` : 'font-roboto');
   } 
   togglePersonalization(isOpen: boolean) {
     this.store.dispatch(PeronalizationActions.togglePersonalization({ isOpen }));

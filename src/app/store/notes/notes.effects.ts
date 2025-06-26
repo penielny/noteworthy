@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as NotesActions from './notes.actions';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 import { mockNotes } from './sample.note';
+import { Store } from '@ngrx/store';
+import { selectNotes, selectUniqueTags } from './notes.selectors';
 
 @Injectable()
 export class NotesEffects {
     loadNotes$;
     loadNotesTags$;
-    constructor(private actions$: Actions) {
+    addNote$;
+    deleteNote$;
+    constructor(private actions$: Actions, private store: Store) {
         this.loadNotes$ = createEffect(() =>
             this.actions$.pipe(
                 ofType(NotesActions.loadNotes),
@@ -21,7 +25,7 @@ export class NotesEffects {
             )
         );
 
-        this.loadNotesTags$ =createEffect(() =>
+        this.loadNotesTags$ = createEffect(() =>
             this.actions$.pipe(
                 ofType(NotesActions.loadNotesTags),
                 mergeMap(() =>
@@ -36,6 +40,34 @@ export class NotesEffects {
                 )
             )
         );
+
+        this.addNote$ = createEffect(() =>
+            this.actions$.pipe(
+                ofType(NotesActions.addNote),
+                withLatestFrom(this.store.select(selectUniqueTags)),
+                map(([action, existingTags]) => {
+                    const newTags = action.note.tags || [];
+                    const combined = Array.from(new Set([...existingTags, ...newTags]));
+
+                    return NotesActions.loadNotesTagsSuccess({ tags: combined });
+                })
+            )
+        );
+
+        this.deleteNote$ = createEffect(() =>
+            this.actions$.pipe(
+                ofType(NotesActions.deleteNote),
+                withLatestFrom(this.store.select(selectNotes)),
+                map(([action, notes]) => {
+                    const filteredNotes = notes.filter(n => n.id !== action.id);
+                    const tags = Array.from(
+                        new Set(filteredNotes.flatMap(note => note.tags || []))
+                    );
+                    return NotesActions.loadNotesTagsSuccess({ tags });
+                })
+            )
+        );
+
     }
 
 
