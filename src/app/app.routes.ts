@@ -50,7 +50,7 @@ export const routes: Routes = [
             {
                 path: '**',
                 component: CreateNoteComponent,
-                 outlet:"list",
+                 outlet:"info",
             },
         ]
     },

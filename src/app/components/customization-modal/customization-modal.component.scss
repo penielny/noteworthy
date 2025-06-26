@@ -1,0 +1,132 @@
+@use 'colors' as *;
+
+.customization-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(0, 0, 0, 0.5);
+
+    .content {
+        background-color: white;
+        width: 60%;
+        height: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            height: 8vh;
+            border-bottom: 1px solid rgb(230, 230, 230);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 0.5rem;
+            gap: 0.5rem;
+            font-weight: bold;
+            justify-content: space-between;
+
+            .actions-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.6rem;
+                    border-radius: 1rem;
+                    cursor: pointer;
+                    border: none;
+                    background-color: rgb(243, 243, 243);
+
+                    svg {
+                        height: 1.5rem;
+                    }
+                }
+            }
+
+            button {
+                background-color: rgba(255, 208, 142, 0.262);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.6rem 1rem;
+                border-radius: 1rem;
+                cursor: pointer;
+                border: none;
+
+                svg {
+                    height: 1.5rem;
+                }
+            }
+        }
+
+        .color-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+
+            .color-options {
+                display: flex;
+                gap: 0.5rem;
+                flex-direction: row;
+
+                
+
+                .color-select {
+                    cursor: pointer;
+                    flex: 1;
+                    height: 4rem;
+                    color: white;
+                    border: none;
+                    border-radius: 1rem;
+
+
+                    &.active.color-bg-default {
+                        @include set-border-color($orange-600);
+                    }
+
+                    &.active.color-bg-blue {
+                        @include set-border-color($blue-600);
+                    }
+
+                    &.active.color-bg-purple {
+                        @include set-border-color($purple-600);
+                    }
+
+                    &.active.color-bg-pink {
+
+                        @include set-border-color($pink-600);
+                    }
+
+                    &.active.color-bg-dark {
+                        @include set-border-color($dark-100);
+                    }
+                }
+
+                .color-bg-default {
+                    @include set-bg-color($orange-600);
+                }
+                .color-bg-blue {
+                    @include set-bg-color($blue-600);
+                }
+                .color-bg-purple {
+                    @include set-bg-color($purple-600);
+                }
+                .color-bg-pink {
+                    @include set-bg-color($pink-600);
+                }
+                .color-bg-dark {
+                    @include set-bg-color($dark-600);
+                }
+            }
+        }
+    }
+}

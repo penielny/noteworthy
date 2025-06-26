@@ -1,4 +1,5 @@
-import { Notes } from "../interfaces/notes";
+import { Notes } from "../../interfaces/notes";
+
 
 export const mockNotes: Notes[] = [
       {

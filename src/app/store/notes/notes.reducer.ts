@@ -4,6 +4,8 @@ import { NotesState } from './notes.model';
 
 export const initialState: NotesState = {
     notes: [],
+    tags: [],
+    selectedTag: null,
     selectedNote: null,
     searchTerm: '',
     loading: false,
@@ -18,6 +20,18 @@ export const notesReducer = createReducer(
         ...state,
         loading: true,
         error: null
+    })),
+
+    on(NotesActions.loadNotesTags, state => ({
+        ...state,
+        loading: true,
+        error: null
+    })),
+
+    on(NotesActions.loadNotesTagsSuccess, (state, { tags }) => ({
+        ...state,
+        tags,
+        loading: false
     })),
 
     on(NotesActions.loadNotesSuccess, (state, { notes }) => ({

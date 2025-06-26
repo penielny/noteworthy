@@ -1,0 +1,73 @@
+@use 'sass:map';
+@use 'colors' as *;
+
+$theme-colors: (
+  'default': (
+    100: $orange-100,
+    200: $orange-200,
+    300: $orange-300,
+    400: $orange-400,
+    500: $orange-500,
+    600: $orange-600,
+    700: $orange-700,
+    800: $orange-800,
+    900: $orange-900
+  ),
+  'blue': (
+    100: $blue-100,
+    200: $blue-200,
+    300: $blue-300,
+    400: $blue-400,
+    500: $blue-500,
+    600: $blue-600,
+    700: $blue-700,
+    800: $blue-800,
+    900: $blue-900
+  ),
+  'purple': (
+    100: $purple-100,
+    200: $purple-200,
+    300: $purple-300,
+    400: $purple-400,
+    500: $purple-500,
+    600: $purple-600,
+    700: $purple-700,
+    800: $purple-800,
+    900: $purple-900
+  ),
+  'pink': (
+    100: $pink-100,
+    200: $pink-200,
+    300: $pink-300,
+    400: $pink-400,
+    500: $pink-500,
+    600: $pink-600,
+    700: $pink-700,
+    800: $pink-800,
+    900: $pink-900
+  ),
+  'dark': (
+    100: $dark-100,
+    200: $dark-200,
+    300: $dark-300,
+    400: $dark-400,
+    500: $dark-500,
+    600: $dark-600,
+    700: $dark-700,
+    800: $dark-800,
+    900: $dark-900
+  )
+);
+
+
+@function get-theme-color($color, $shade: 600) {
+  @return map-get(map-get($theme-colors, $color), $shade);
+}
+
+@each $color-name, $shades in $theme-colors {
+  @each $shade, $value in $shades {
+    .bg-#{$color-name}-#{$shade} {
+      background-color: #{$value} !important;
+    }
+  }
+}

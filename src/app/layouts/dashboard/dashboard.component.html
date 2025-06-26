@@ -1,7 +1,10 @@
 <main class="dashboard-wrapper">
-    <app-sidebar></app-sidebar>
+    <app-sidebar [showCustomization]="showCustomization" (toggleModal)="toggleModal($event)"></app-sidebar>
     <app-listbar></app-listbar>
     <section class="note-info-col">
         <router-outlet name="info" />
     </section>
+    @if (showCustomization) {
+    <app-customization-modal [isOpen]="showCustomization" />
+    }
 </main>

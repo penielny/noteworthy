@@ -1,49 +1,61 @@
 // oranges colors
-$orange-100: #fff3e0 !default; // lightest
+$orange-100: #fff3e0 !default; 
 $orange-200: #ffe0b2 !default;
 $orange-300: #ffcc80 !default;
 $orange-400: #ffb74d !default;
-$orange-500: #ffa726 !default; // default
+$orange-500: #ffa726 !default; 
 $orange-600: #ff9800 !default;
 $orange-700: #fb8c00 !default;
 $orange-800: #f57c00 !default;
-$orange-900: #ef6c00 !default; // darkest
+$orange-900: #ef6c00 !default; 
 
 
 // purple// purple colors
-$purple-100: #f3e5f5 !default; // lightest
+$purple-100: #f3e5f5 !default; 
 $purple-200: #e1bee7 !default;
 $purple-300: #ce93d8 !default;
 $purple-400: #ba68c8 !default;
-$purple-500: #ab47bc !default; // default
+$purple-500: #ab47bc !default; 
 $purple-600: #9c27b0 !default;
 $purple-700: #8e24aa !default;
 $purple-800: #7b1fa2 !default;
-$purple-900: #6a1b9a !default; // darkest   
+$purple-900: #6a1b9a !default; 
 
 // pink
 // pink colors
-$pink-100: #fce4ec !default; // lightest
+$pink-100: #fce4ec !default; 
 $pink-200: #f8bbd0 !default;
 $pink-300: #f48fb1 !default;
 $pink-400: #f06292 !default;
-$pink-500: #ec407a !default; // default
+$pink-500: #ec407a !default; 
 $pink-600: #e91e63 !default;
 $pink-700: #d81b60 !default;
 $pink-800: #c2185b !default;
-$pink-900: #ad1457 !default; // darkest
+$pink-900: #ad1457 !default; 
 
 // blue
 // blue colors
-$blue-100: #e3f2fd !default; // lightest
+$blue-100: #e3f2fd !default; 
 $blue-200: #bbdefb !default;
 $blue-300: #90caf9 !default;
 $blue-400: #64b5f6 !default;
-$blue-500: #42a5f5 !default; // default
+$blue-500: #42a5f5 !default; 
 $blue-600: #2196f3 !default;
 $blue-700: #1e88e5 !default;
 $blue-800: #1976d2 !default;
-$blue-900: #1565c0 !default; // darkest
+$blue-900: #1565c0 !default; 
+
+
+
+$dark-100: #212121 !default;
+$dark-200: #424242 !default;
+$dark-300: #616161 !default;
+$dark-400: #757575 !default;
+$dark-500: #9e9e9e !default;
+$dark-600: #bdbdbd !default;
+$dark-700: #e0e0e0 !default;
+$dark-800: #f5f5f5 !default;
+$dark-900: #fafafa !default;
 
 
 
@@ -54,4 +66,10 @@ $blue-900: #1565c0 !default; // darkest
 // let use a mxin toset background color
 @mixin set-bg-color($color) {
   background-color: $color !important;
+}
+
+
+@mixin set-border-color($color) {
+  $border: if(lightness($color) > 50, darken($color, 20%), lighten($color, 20%));
+  border: 2px solid $border !important;
 }

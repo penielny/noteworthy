@@ -47,7 +47,7 @@
 
             </button>
         </div>
-        <a [routerLink]="['/app', { outlets: { info: ['notes', note.id, 'edit'] } }]">
+        <a [ngClass]="themeService.getBgClass()" [routerLink]="['/app', { outlets: { info: ['notes', note.id, 'edit'] } }]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -62,7 +62,7 @@
         <p class="note">{{note.note}}</p>
         <div class="tags">
             @for (tag of note.tags; track $index) {
-            <div class="tag">
+            <div [ngClass]="themeService.getBgClass(themeService.currentColor,100)" class="tag">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"

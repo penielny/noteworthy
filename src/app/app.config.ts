@@ -1,19 +1,19 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { notesReducer } from './store/notes.reducer'
+import { notesReducer } from './store/notes/notes.reducer'
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { NotesEffects } from './store/notes.effects';
+import { NotesEffects } from './store/notes/notes.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { PersonalizationReducer } from './store/personlization/personlization.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideStore({ notes: notesReducer }),
+    provideStore({ notes: notesReducer, personalization: PersonalizationReducer }),
     provideEffects([NotesEffects]),
     provideStoreDevtools()
   ],
-
 };

@@ -1,6 +1,6 @@
 <section class="sidebar">
     <div class="sidebar-header">
-        <div class="icon">
+        <div class="icon" [ngClass]="getBgClass(currentTheme, 400)">
             <svg data-slot="icon" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path
@@ -35,13 +35,13 @@
                         </svg>
                         <p>Notes</p>
                     </div>
-                    <div class="count">
+                    <div [ngClass]="getCountBgClass(currentTheme, 200)" class="count">
                         {{noteCount}}
                     </div>
                 </a>
             </li>
             <li class="link-container">
-                <a [routerLink]="[{ outlets: { list: ['favourites'] } }]" class="link">
+                <a routerLinkActive="active" [routerLink]="[{ outlets: { list: ['favourites'] } }]" class="link">
                     <div class="wrapper">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
@@ -50,7 +50,7 @@
                         </svg>
                         <p>Favourites</p>
                     </div>
-                    <div class="count">
+                    <div [ngClass]="getCountBgClass(currentTheme, 200)" class="count">
                         {{favCount}}
                     </div>
                 </a>
@@ -65,7 +65,7 @@
                         </svg>
                         <p>Archived</p>
                     </div>
-                    <div class="count">
+                    <div [ngClass]="getCountBgClass(currentTheme, 200)" class="count">
                         {{archivedCount}}
                     </div>
                 </a>
@@ -76,21 +76,23 @@
     <div class="tags-list">
         <h3>Tags</h3>
         <ul>
-            <li class="link-container">
-                <a [routerLink]="[{ outlets: { list: null } }]" class="link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-                    </svg>
-                    <p>Science</p>
-                </a>
-            </li>
+            @for (tag of tags; track tag) {
+                <li class="link-container">
+                    <a class="link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+                        </svg>
+                        <p>{{tag}}</p>
+                    </a>
+                </li>
+            }
         </ul>
     </div>
     <div class="spacer"></div>
-    <button class="footer">
+    <button (click)="onToggleModal()" class="footer">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round"

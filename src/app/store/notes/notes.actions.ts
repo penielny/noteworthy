@@ -1,11 +1,23 @@
 import { createAction, props } from '@ngrx/store';
-import { Notes } from '../interfaces/notes';
+import { Notes } from '../../interfaces/notes';
+
 
 export const loadNotes = createAction('[Notes] Load Notes');
 
 export const loadNotesSuccess = createAction(
   '[Notes] Load Notes Success',
   props<{ notes: Notes[] }>()
+);
+export const loadNotesTags = createAction('[Notes] Load Notes Tags'); 
+
+export const loadNotesTagsSuccess = createAction(
+  '[Notes] Load Notes Tags Success',
+  props<{ tags: string[] }>()
+);
+
+export const loadNotesTagsFailure = createAction(
+  '[Notes] Load Notes Tag Failure',
+  props<{ error: any }>()
 );
 
 export const loadNotesFailure = createAction(
