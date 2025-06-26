@@ -1,30 +1,39 @@
 # Noteworthy
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.14.
+![Noteworthy Screenshot](./public/assets/screenshot/home.png)
 
-## Development server
+notewothy is a simple note-taking application built with Angular. It allows users to create, edit, and delete notes, providing a straightforward interface for managing personal notes.
+
+[Noteworthy Live Demo ](noteworthi.netlify.app)
+
+
+## Features
+- Create, edit, and delete notes
+- Search notes by title or content
+- Responsive design for mobile and desktop devices
+- theming support with custome colors
+
+## Technologies Used
+- Angular: A platform for building mobile and desktop web applications.
+- TypeScript: A superset of JavaScript that compiles to plain JavaScript.
+- RxJS: A library for reactive programming using Observables.
+
+
+## Run noteworthy locally
 
 To start a local development server, run:
 
 ```bash
-ng serve
+git clone https://github.com/penielny/noteworthy.git
+&& cd noteworthy
+&& npm install
+&& ng serve
 ```
+
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
 
 ## Building
 
@@ -36,23 +45,6 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
