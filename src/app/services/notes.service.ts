@@ -37,6 +37,11 @@ export class NotesService {
     this.store.dispatch(NotesActions.loadNotes());
   }
 
+  setSelectedTag(tag: string ) {
+    // this.store.dispatch(NotesActions.setNoteSelectedTag({ tags: tag }));
+    this.store.dispatch(NotesActions.searchNote({ term: tag }));
+  }
+
   getNote(id: number) {
     this.store.dispatch(NotesActions.getNote({ id }));
   }

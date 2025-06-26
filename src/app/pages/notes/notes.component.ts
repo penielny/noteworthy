@@ -15,6 +15,7 @@ export class NotesComponent {
   allNotes: Notes[] = [];
   notes: Notes[] = [];
   term: string = '';
+  selectedTag: string | null = null;
   constructor(private notesServices: NotesService) { }
 
   ngOnInit(): void {
@@ -31,6 +32,13 @@ export class NotesComponent {
         this.filterNotes();
       })
     );
+
+    this.subscription.add(
+      this.notesServices.selectedTag$.subscribe(tag => {
+        this.selectedTag = tag;
+        this.filterNotes();
+      })
+    );
   }
 
   filterNotes(): void {
@@ -41,7 +49,10 @@ export class NotesComponent {
         note.note.toLowerCase().includes(term) ||
         note.tags.some(tag => tag.toLowerCase().includes(term))
       );
-    } else {
+    } 
+    
+    
+    else {
       this.notes = [...this.allNotes];
     }
   }

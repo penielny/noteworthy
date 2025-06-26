@@ -45,6 +45,10 @@ export class SidebarComponent implements OnDestroy {
     }));
   }
 
+  onSelectTag(tag: string) {
+    this.noteService.setSelectedTag(tag);
+  }
+
 
 getCountBgClass(color: string, shade: number = 600): string {
   const colorKey = color;
