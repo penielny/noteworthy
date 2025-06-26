@@ -5,6 +5,7 @@ import { ArchivedComponent } from './pages/archived/archived.component';
 import { CreateNoteComponent } from './pages/create-note/create-note.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { FavouriteComponent } from './pages/favourite/favourite.component';
+import { EditNoteComponent } from './pages/edit-note/edit-note.component';
 
 export const routes: Routes = [
     {
@@ -28,7 +29,7 @@ export const routes: Routes = [
             },
             {
                 path: 'notes/:id/edit',
-                component: NoteComponent,
+                component: EditNoteComponent,
                  outlet:"info",
             },
             {
@@ -45,6 +46,11 @@ export const routes: Routes = [
                 path: 'create',
                 component: CreateNoteComponent,
                  outlet:"info",
+            },
+            {
+                path: '**',
+                component: CreateNoteComponent,
+                 outlet:"list",
             },
         ]
     },

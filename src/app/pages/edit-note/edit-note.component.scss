@@ -1,24 +1,7 @@
-.note-wrapper {
-    flex: 1;
-
-    .tags {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        .tag {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            border-radius: 0.5rem;
-            svg {
-                height: 1rem;
-            }
-
-            padding: 0.5rem 1rem;
-            background-color: rgba(255, 243, 224, 0.732);
-        }
-    }
+.edit-wrapper{
+        flex: 1;
+    display: flex;
+    flex-direction: column;
 
     .header {
         height: 8vh;
@@ -44,21 +27,18 @@
                 cursor: pointer;
                 border: none;
                 background-color: rgb(243, 243, 243);
-
                 svg {
                     height: 1.5rem;
                 }
             }
         }
 
-        a {
-            text-decoration: none;
-            color: rgb(162, 92, 0);
+        button {
             background-color: rgba(255, 208, 142, 0.262);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap:0.5rem;
             padding: 0.6rem 1rem;
             border-radius: 1rem;
             cursor: pointer;
@@ -67,20 +47,6 @@
             svg {
                 height: 1.5rem;
             }
-        }
-    }
-
-    .body {
-        padding: 3rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        p {
-            line-height: 2rem;
-            color: rgb(97, 96, 96);
-            font-weight: 400;
-            font-size: medium;
         }
     }
 }

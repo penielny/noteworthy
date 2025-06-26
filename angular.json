@@ -20,6 +20,11 @@
             "outputPath": "dist/noteworthy",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "polyfills": [
               "zone.js"
             ],

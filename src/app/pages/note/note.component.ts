@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NotesService } from '../../services/notes.service';
 import { Notes } from '../../interfaces/notes';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-note',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './note.component.html',
   styleUrl: './note.component.scss'
 })

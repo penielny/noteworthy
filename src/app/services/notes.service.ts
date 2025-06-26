@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as  NotesActions from '../store/notes.actions';
 import { Notes } from '../interfaces/notes';
-import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes, selectSelectedNote } from '../store/notes.selectors';
+import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes, selectSelectedNote, selectSearchTerm } from '../store/notes.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class NotesService {
   loading$: Observable<boolean>;
   selectedNote$: Observable<Notes | null>;
   error$: Observable<any>;
+  term$: Observable<string>;
 
   constructor(private store: Store) {
     this.store.dispatch(NotesActions.loadNotes());
@@ -24,6 +25,7 @@ export class NotesService {
     this.loading$ = this.store.select(selectLoading);
     this.error$ = this.store.select(selectError);
     this.selectedNote$ = this.store.select(selectSelectedNote)
+    this.term$ = this.store.select(selectSearchTerm);
   }
 
   loadNotes() {
@@ -33,7 +35,15 @@ export class NotesService {
   getNote(id: number) {
     this.store.dispatch(NotesActions.getNote({ id }));
   }
-  
+
+  searchNote(term: string) {
+    this.store.dispatch(NotesActions.searchNote({ term }));
+  }
+
+  clearSearchNote() {
+    this.store.dispatch(NotesActions.searchNote({ term: "" }));
+  }
+
   addNote(note: Notes) {
     this.store.dispatch(NotesActions.addNote({ note }));
   }
@@ -42,7 +52,7 @@ export class NotesService {
     this.store.dispatch(NotesActions.editNote({ note }));
   }
 
-  deleteNote(id:number) {
+  deleteNote(id: number) {
     this.store.dispatch(NotesActions.deleteNote({ id }));
   }
 

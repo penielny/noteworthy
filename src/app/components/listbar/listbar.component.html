@@ -1,13 +1,13 @@
 <section class="note-list-col">
     <div class="header">
         <div class="search-container">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2}
                 stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round"
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
 
-            <input />
+            <input [value]="searchTerm" (input)="onSearchChange($event)"  placeholder="search notes ..." />
         </div>
         <a [routerLink]="[{ outlets: { info: ['create'] } }]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -17,7 +17,6 @@
         </a>
     </div>
     <div class="list-container">
-
         <router-outlet name="list" />
     </div>
 </section>

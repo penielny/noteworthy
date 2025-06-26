@@ -13,7 +13,7 @@ export class NoteListItemComponent {
   list_path: string = "";
   @Input() note!: Notes;
 
-  constructor(private router: Router,private notesService:NotesService) {
+  constructor(private router: Router, private notesService: NotesService) {
     const url = this.router.url;
 
     if (url.includes('favourites')) {
@@ -25,8 +25,15 @@ export class NoteListItemComponent {
     }
   }
 
-  onSelectNote(){
+  onSelectNote() {
     this.notesService.getNote(this.note.id)
+  }
+
+  parseDate(timeStamp: number) {
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    const date = new Date(timeStamp)
+    
+    return `${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
   }
 
   get outletLink() {
@@ -38,7 +45,7 @@ export class NoteListItemComponent {
       outlets['list'] = [this.list_path];
     }
 
-    return ['/app',{ outlets }];
+    return ['/app', { outlets }];
   }
 
 
