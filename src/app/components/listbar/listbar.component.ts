@@ -32,6 +32,10 @@ export class ListbarComponent implements OnDestroy {
     }
   }
 
+  fakeSelect(){
+    this.notesService.getNote(1);
+  }
+
   getBgClass(color: string, shade: number = 600): string {
   const colorKey = color;
   return `bg-${colorKey}-${shade}`;
