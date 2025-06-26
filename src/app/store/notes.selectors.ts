@@ -14,6 +14,11 @@ export const selectSelectedNote = createSelector(
   (state) => state.selectedNote
 );
 
+export const selectSearchTerm = createSelector(
+  selectNotesState,
+  (state) => state.searchTerm
+);
+
 export const selectLoading = createSelector(
   selectNotesState,
   (state) => state.loading

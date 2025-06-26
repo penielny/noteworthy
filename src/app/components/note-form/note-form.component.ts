@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl } from '@angular/forms';
 import { Notes } from '../../interfaces/notes';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ export class NoteFormComponent {
   @Output() formSubmit = new EventEmitter<Notes>();
   tagInput = new FormControl('');
   form!: FormGroup;
+   @ViewChild('noteTextarea') noteTextarea!: ElementRef;
 
   constructor(private fb: FormBuilder) { }
 
@@ -29,6 +30,12 @@ export class NoteFormComponent {
       createdAt: [this.noteData?.createdAt ?? Date.now()],
     });
   }
+  onInput() {
+    const textarea = this.noteTextarea.nativeElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+
 
   get tags(): FormArray {
     return this.form.get('tags') as FormArray;

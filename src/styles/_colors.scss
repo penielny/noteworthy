@@ -1,0 +1,57 @@
+// oranges colors
+$orange-100: #fff3e0 !default; // lightest
+$orange-200: #ffe0b2 !default;
+$orange-300: #ffcc80 !default;
+$orange-400: #ffb74d !default;
+$orange-500: #ffa726 !default; // default
+$orange-600: #ff9800 !default;
+$orange-700: #fb8c00 !default;
+$orange-800: #f57c00 !default;
+$orange-900: #ef6c00 !default; // darkest
+
+
+// purple// purple colors
+$purple-100: #f3e5f5 !default; // lightest
+$purple-200: #e1bee7 !default;
+$purple-300: #ce93d8 !default;
+$purple-400: #ba68c8 !default;
+$purple-500: #ab47bc !default; // default
+$purple-600: #9c27b0 !default;
+$purple-700: #8e24aa !default;
+$purple-800: #7b1fa2 !default;
+$purple-900: #6a1b9a !default; // darkest   
+
+// pink
+// pink colors
+$pink-100: #fce4ec !default; // lightest
+$pink-200: #f8bbd0 !default;
+$pink-300: #f48fb1 !default;
+$pink-400: #f06292 !default;
+$pink-500: #ec407a !default; // default
+$pink-600: #e91e63 !default;
+$pink-700: #d81b60 !default;
+$pink-800: #c2185b !default;
+$pink-900: #ad1457 !default; // darkest
+
+// blue
+// blue colors
+$blue-100: #e3f2fd !default; // lightest
+$blue-200: #bbdefb !default;
+$blue-300: #90caf9 !default;
+$blue-400: #64b5f6 !default;
+$blue-500: #42a5f5 !default; // default
+$blue-600: #2196f3 !default;
+$blue-700: #1e88e5 !default;
+$blue-800: #1976d2 !default;
+$blue-900: #1565c0 !default; // darkest
+
+
+
+// let use a mxin toset color 
+@mixin set-color($color) {
+  color: $color !important;
+}
+// let use a mxin toset background color
+@mixin set-bg-color($color) {
+  background-color: $color !important;
+}

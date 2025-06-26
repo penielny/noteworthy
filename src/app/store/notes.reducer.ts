@@ -5,6 +5,7 @@ import { NotesState } from './notes.model';
 export const initialState: NotesState = {
     notes: [],
     selectedNote: null,
+    searchTerm: '',
     loading: false,
     error: null
 };
@@ -41,6 +42,11 @@ export const notesReducer = createReducer(
     on(NotesActions.addNote, (state, { note }) => ({
         ...state,
         notes: [note, ...state.notes]
+    })),
+
+    on(NotesActions.searchNote, (state, { term }) => ({
+        ...state,
+        searchTerm: term
     })),
 
     on(NotesActions.editNote, (state, { note }) => ({

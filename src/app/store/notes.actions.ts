@@ -17,6 +17,12 @@ export const getNote = createAction(
   '[Notes] Get Note',
   props<{ id: number }>()
 );
+
+export const searchNote = createAction(
+  '[Notes] Search Note',
+  props<{ term: string }>()
+);
+
 export const getNoteSuccess = createAction(
   '[Notes] Get Note Success',
   props<{ note: Notes }>()

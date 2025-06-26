@@ -7,7 +7,7 @@
 
     <div class="form-field">
         <label for="note">Note</label>
-        <textarea placeholder="type note content" name="note" formControlName="note"></textarea>
+        <textarea #noteTextarea  (input)="onInput()" placeholder="type note content" name="note" formControlName="note"></textarea>
     </div>
 
     <div class="form-field">
