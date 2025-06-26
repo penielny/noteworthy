@@ -7,13 +7,14 @@ import { provideEffects } from '@ngrx/effects';
 import { NotesEffects } from './store/notes/notes.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { PersonalizationReducer } from './store/personlization/personlization.reducer';
+import { PersonalizationEffects } from './store/personlization/personlization.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({ notes: notesReducer, personalization: PersonalizationReducer }),
-    provideEffects([NotesEffects]),
+    provideEffects([NotesEffects,PersonalizationEffects]),
     provideStoreDevtools()
   ],
 };
