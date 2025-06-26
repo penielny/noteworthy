@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as  NotesActions from '../store/notes.actions';
+import * as  NotesActions from '../store/notes/notes.actions';
 import { Notes } from '../interfaces/notes';
-import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes, selectSelectedNote, selectSearchTerm } from '../store/notes.selectors';
+import { selectArchivedNotes, selectError, selectFavouriteNotes, selectLoading, selectNotes, selectSelectedNote, selectSearchTerm, selectUniqueTags, selectSelectedTag } from '../store/notes/notes.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,12 @@ export class NotesService {
   selectedNote$: Observable<Notes | null>;
   error$: Observable<any>;
   term$: Observable<string>;
+  tags$: Observable<string[]>;
+  selectedTag$: Observable<string | null>;
 
   constructor(private store: Store) {
     this.store.dispatch(NotesActions.loadNotes());
+    this.store.dispatch(NotesActions.loadNotesTags());
     this.notes$ = this.store.select(selectNotes);
     this.favourites$ = this.store.select(selectFavouriteNotes);
     this.archives$ = this.store.select(selectArchivedNotes)
@@ -26,6 +29,8 @@ export class NotesService {
     this.error$ = this.store.select(selectError);
     this.selectedNote$ = this.store.select(selectSelectedNote)
     this.term$ = this.store.select(selectSearchTerm);
+    this.tags$ = this.store.select(selectUniqueTags);
+    this.selectedTag$ = this.store.select(selectSelectedTag);
   }
 
   loadNotes() {

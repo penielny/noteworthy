@@ -38,3 +38,13 @@ export const selectFavouriteNotes = createSelector(
   selectNotes,
   (notes) => notes.filter(note => note.isFavourite)
 );
+
+export const selectUniqueTags = createSelector(
+  selectNotesState,
+  (state) => state.tags
+);
+
+export const selectSelectedTag = createSelector(
+  selectNotesState,
+  (state) => state.selectedTag
+);

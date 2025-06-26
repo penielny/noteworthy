@@ -3,16 +3,18 @@ import { NoteFormComponent } from "../../components/note-form/note-form.componen
 import { Notes } from '../../interfaces/notes';
 import { NotesService } from '../../services/notes.service';
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-create-note',
-  imports: [NoteFormComponent],
+  imports: [NoteFormComponent,NgClass],
   templateUrl: './create-note.component.html',
   styleUrl: './create-note.component.scss'
 })
 export class CreateNoteComponent {
   @ViewChild(NoteFormComponent) noteForm!: NoteFormComponent;
-  constructor(private notesService: NotesService, private router: Router) { }
+  constructor(private notesService: NotesService, private router: Router,protected theme:ThemeService) { }
 
   triggerFormSubmit() {
     this.noteForm.submit();

@@ -1,3 +1,4 @@
+@use 'theme' as *;
 .create-wrapper {
     flex: 1;
     display: flex;
@@ -24,6 +25,7 @@
                 justify-content: center;
                 padding: 0.6rem;
                 border-radius: 1rem;
+                color: white;
                 cursor: pointer;
                 border: none;
                 background-color: rgb(243, 243, 243);
@@ -34,10 +36,10 @@
         }
 
         button {
-            background-color: rgba(255, 208, 142, 0.262);
             display: flex;
             align-items: center;
             justify-content: center;
+             color: white;
             gap:0.5rem;
             padding: 0.6rem 1rem;
             border-radius: 1rem;
