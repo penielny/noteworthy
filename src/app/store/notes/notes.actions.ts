@@ -15,6 +15,11 @@ export const loadNotesTagsSuccess = createAction(
   props<{ tags: string[] }>()
 );
 
+export const setNoteSelectedTag = createAction(
+  '[Notes] Set Notes Selected Tag',
+  props<{ tags: string }>()
+);
+
 export const loadNotesTagsFailure = createAction(
   '[Notes] Load Notes Tag Failure',
   props<{ error: any }>()

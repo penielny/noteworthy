@@ -1,6 +1,12 @@
 <div class="note-wrapper">
     @if (!note) {
-    <p>can't find this note</p>
+    <section class="note-info-welcome">
+        <img src="assets/images/note-placeholder.png" alt="note placeholder" />
+        <h2>Welcome to Noteworthy</h2>
+        <p>
+            Select a note to view or edit
+        </p>
+    </section>
     }@else {
     <div class="header">
         <div class="actions-container">

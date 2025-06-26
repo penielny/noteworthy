@@ -78,7 +78,7 @@
         <ul>
             @for (tag of tags; track tag) {
                 <li class="link-container">
-                    <a class="link">
+                    <a (click)="onSelectTag(tag)" class="link">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -91,7 +91,7 @@
             }
         </ul>
     </div>
-    <div class="spacer"></div>
+
     <button (click)="onToggleModal()" class="footer">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-6">

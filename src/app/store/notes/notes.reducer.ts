@@ -28,6 +28,11 @@ export const notesReducer = createReducer(
         error: null
     })),
 
+    on(NotesActions.setNoteSelectedTag, (state, { tags }) => ({
+        ...state,
+        selectedTag: tags
+    })),
+
     on(NotesActions.loadNotesTagsSuccess, (state, { tags }) => ({
         ...state,
         tags,
