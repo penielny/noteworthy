@@ -7,6 +7,7 @@
 
     app-sidebar {
         width: 20%;
+        min-width: 200px;
         height: 100dvh;
         border-right: 1px solid rgb(220, 220, 220);
         flex-shrink: 0;
@@ -15,6 +16,7 @@
     app-listbar {
         border-right: 1px solid rgb(220, 220, 220);
         width: 30%;
+        min-width: 300px;
         display: flex;
         flex-direction: column;
         height: 100dvh;
@@ -23,31 +25,34 @@
     }
 
     .note-info-col {
-        flex: 1 ;
+        flex: 1;
         overflow: hidden;
     }
 
-    .note-info-welcome{
-        flex:1;
+    .note-info-welcome {
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: .5rem;
-        img{
+
+        img {
             height: 5rem;
         }
-        h2{
+
+        h2 {
             font-size: 1.5rem;
-            color: rgb(82, 82, 82);  
+            color: rgb(82, 82, 82);
         }
-        p{
+
+        p {
             color: rgb(142, 142, 142);
             font-size: 1rem;
         }
     }
 
-    app-customization-modal{
+    app-customization-modal {
         position: absolute;
         top: 0;
         left: 0;
@@ -59,4 +64,57 @@
         align-items: center;
         justify-content: center;
     }
+}
+
+.footer{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    border-top: 1px solid rgb(220, 220, 220);
+
+    .link{
+        flex:1;
+        border-right: 1px solid rgb(220, 220, 220);
+        height: 100%;
+        display: flex;
+        padding: 0 0.5rem;
+        color: black;
+        text-decoration: none;
+        .wrapper{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            svg{
+                height: 2.5rem;
+                color: rgb(82, 82, 82);
+            }
+        }
+    }
+    .link:last-child {
+        border-right: none;
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .dashboard-wrapper {
+        height: 90dvh;
+
+        app-sidebar {
+            display: none;
+        }
+
+        app-listbar {
+             height: 90dvh;
+        }
+    }
+
+    .footer{
+    display: flex;
+}
+
 }

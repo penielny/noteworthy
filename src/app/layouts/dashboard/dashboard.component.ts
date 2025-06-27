@@ -1,15 +1,16 @@
 import { Component, OnDestroy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { ListbarComponent } from "../../components/listbar/listbar.component";
 import { PersonalizationService } from '../../services/personalization.service';
 import { Subscription } from 'rxjs';
 import { CustomizationModalComponent } from "../../components/customization-modal/customization-modal.component";
 import { NotesService } from '../../services/notes.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet, SidebarComponent, ListbarComponent, CustomizationModalComponent],
+  imports: [RouterOutlet, SidebarComponent, ListbarComponent, CustomizationModalComponent,RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
