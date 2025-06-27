@@ -28,6 +28,13 @@
             min-height: 20vh;
             font-size: 1rem;
         }
+
+        .error{
+            p{
+                color: red;
+                font-size: 0.8rem;
+            }
+        }
     }
 
     .tags-container {

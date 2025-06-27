@@ -32,7 +32,7 @@ export class PersonalizationService {
       }
     })
     document.body.classList.add(fontName ? `font-${fontName}` : 'font-roboto');
-  } 
+  }
   togglePersonalization(isOpen: boolean) {
     this.store.dispatch(PeronalizationActions.togglePersonalization({ isOpen }));
   }

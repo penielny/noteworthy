@@ -14,8 +14,8 @@
         <label for="note">Note</label>
         <textarea #noteTextarea  (input)="onInput()" placeholder="type note content" name="note" formControlName="note"></textarea>
         <div class="error">
-            @if(form.get('title')?.errors?.['required'] && form.get('title')?.touched) {
-            <p class="error-text">Title is required</p>
+            @if(form.get('note')?.errors?.['required'] && form.get('note')?.touched) {
+            <p class="error-text">Content is required</p>
             }
         </div>
     </div>

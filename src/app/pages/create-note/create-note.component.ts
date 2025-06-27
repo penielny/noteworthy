@@ -20,6 +20,10 @@ export class CreateNoteComponent {
     this.noteForm.submit();
   }
 
+  goBack() {
+     
+  }
+
   onSubmit(note: Notes) {
     this.notesService.addNote(note)
     this.noteForm.reset();

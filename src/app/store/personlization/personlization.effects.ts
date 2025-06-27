@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as PersonalizationActions from './personlization.actions';
-import { map } from "rxjs";
+import { map, withLatestFrom } from "rxjs";
 import { PersonalizationState } from "./personlization.model";
+import * as PersonalizationSelectors from './personlization.selectors'
 
 @Injectable()
 export class PersonalizationEffects {
@@ -31,10 +32,10 @@ export class PersonalizationEffects {
         this.$setPersonalizationFont = createEffect(() =>
             this.actions$.pipe(
                 ofType(PersonalizationActions.setPersonalizationFont),
-                map(({ fontName }) => {
-                    const existing = JSON.parse(localStorage.getItem('theme') || 'undefined');
-                    const personalization = { ...existing, fontName };
-                    localStorage.setItem('theme', JSON.stringify(personalization));
+                withLatestFrom(this.store.select(PersonalizationSelectors.selectPersonalizationState)),
+                map(([action, currentState]) => {
+                    const personalization = { ...currentState, fontName: action.fontName };
+                    localStorage.setItem('theme', JSON.stringify({ ...personalization, isOpen: false }));
                     return PersonalizationActions.setPersonalization({ personalization });
                 })
             )
@@ -43,10 +44,10 @@ export class PersonalizationEffects {
         this.$setPersonalizationTheme = createEffect(() =>
             this.actions$.pipe(
                 ofType(PersonalizationActions.setPersonalizationTheme),
-                map(({ color }) => {
-                    const existing = JSON.parse(localStorage.getItem('theme') || 'undefined');
-                    const personalization = { ...existing, color };
-                    localStorage.setItem('theme', JSON.stringify(personalization));
+                withLatestFrom(this.store.select(PersonalizationSelectors.selectPersonalizationState)),
+                map(([action, currentState]) => {
+                    const personalization = { ...currentState, color: action.color };
+                    localStorage.setItem('theme', JSON.stringify({ ...personalization, isOpen: false }));
                     return PersonalizationActions.setPersonalization({ personalization });
                 })
             )
