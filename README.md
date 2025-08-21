@@ -4,8 +4,9 @@
 
 notewothy is a simple note-taking application built with Angular. It allows users to create, edit, and delete notes, providing a straightforward interface for managing personal notes.
 
-[Noteworthy Live Demo ](noteworthi.netlify.app)
+[Noteworthy Deployment Documentation ](./DEPLOYMENT.md)
 
+[Noteworthy Live Demo ](https://main.d1wf275t1om9ok.amplifyapp.com)
 
 ## Features
 - Create, edit, and delete notes
